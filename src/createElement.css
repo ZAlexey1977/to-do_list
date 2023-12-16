@@ -1,0 +1,29 @@
+div {
+  min-height: 150px;
+  /* background-color: blueviolet; */
+  /* padding-top: 20px; */
+}
+
+h2 {
+  font-size: 35px;
+}
+
+input {
+  height: 50px;
+  width: 1000px;
+  font-size: larger;
+  padding-left: 10px;
+  border: 2px solid blueviolet;
+  border-radius: 5px;
+  background-color: rgb(239, 245, 248);
+}
+
+button {
+  height: 55px;
+  width: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-top: 5px;
+  border: 2px solid blueviolet;
+  background-color: rgb(20, 172, 238);
+}
