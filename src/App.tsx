@@ -1,12 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import CreateElement from './createElement';
+import CreateElement from './CreateElement';
+import Filter from './Filter';
+import List from './List';
 
 function App() {
   return (
     <div className="App">
      <CreateElement/>
+     <Filter/>
+     <List/>
     </div>
   );
 }

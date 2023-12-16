@@ -1,0 +1,11 @@
+.list {
+    margin: auto ;
+    padding-top: 20px;
+    padding-left: 100px;
+    background-color: rgb(188, 232, 247);
+    min-height: 150px;
+    display: flex-box;
+    flex-flow: wrap;
+    text-align: left;
+    font-size: 25px;
+}
