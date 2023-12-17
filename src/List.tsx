@@ -1,8 +1,12 @@
+
 import './List.css';
+// import setItemToLocalStorage from './handler/create';
+
 function List(){
   return(
     <div className="list">
-      There are will be list
+      <input type='checkbox'/>
+      <p >{'text'}</p>
     </div>
   )
 }
