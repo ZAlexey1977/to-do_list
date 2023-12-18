@@ -1,20 +1,18 @@
 
-import './List.css';
+import './ListItem.css';
 import addItem from './CreateElement';
 import { useEffect, useState } from 'react';
 // import setItemToLocalStorage from './handler/create';
 
-function List(){
+function ListItem(props: {data: string}){
 
-let data = () => {
-  addItem()
-}
+
   return(
     <div className="list">
       <input type='checkbox'/>
-      <p>{'data'}</p>
+      <p>{props.data}</p>
     </div>
   )
 }
 
-export default List;
+export default ListItem;

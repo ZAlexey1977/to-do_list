@@ -1,7 +1,13 @@
 import './CreateElement.css';
- //import setItemToLocalStorage from './handler/create';
 
-function CreateElement(){
+type CreateElementProps = {
+  store: string[], 
+  setMyStore: (elements: string[]) => void
+}
+
+function CreateElement(props: CreateElementProps){
+
+
   
   const getTodoItem = (): string => {
   let getTask: HTMLInputElement = document.querySelector(".getTask") as HTMLInputElement;
@@ -9,8 +15,8 @@ function CreateElement(){
   return data;
   }
    
-  const addItem = () => {
-    localStorage.setItem(String(localStorage.length), getTodoItem());
+  const addItem = (): void => {
+    props.setMyStore([...props.store, getTodoItem()]);
   }
 
   return (
