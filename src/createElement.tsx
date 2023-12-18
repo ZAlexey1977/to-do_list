@@ -1,21 +1,22 @@
 import './CreateElement.css';
- import setItemToLocalStorage from './handler/create';
+ //import setItemToLocalStorage from './handler/create';
 
 function CreateElement(){
-
+  
   const getTodoItem = (): string => {
   let getTask: HTMLInputElement = document.querySelector(".getTask") as HTMLInputElement;
-  return getTask.value;
+  let data: string = getTask.value;
+  return data;
   }
    
   const addItem = () => {
-    setItemToLocalStorage(getTodoItem());
+    localStorage.setItem(String(localStorage.length), getTodoItem());
   }
 
   return (
     <div className="creater">
       <h2>To do list</h2>
-      <input type="text" className="getTask" value='some text'/>
+      <input type="text" className="getTask" />
       <button onClick={addItem}>Add</button>
     </div>
   )
