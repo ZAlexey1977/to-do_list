@@ -1,16 +1,28 @@
 
 import './ListItem.css';
-import addItem from './CreateElement';
-import { useEffect, useState } from 'react';
-// import setItemToLocalStorage from './handler/create';
+//import addItem from './CreateElement';
+import { useEffect, useRef, useState } from 'react';
+
 
 function ListItem(props: {data: string}){
+  const checkboxRef = useRef<HTMLInputElement>(null);
+  const paragrafRef = useRef<HTMLParagraphElement>(null);
 
+  function checkTaskDone( ): void{
+    let checkedInput = checkboxRef.current;
+    let checkedPar = paragrafRef.current;
+
+    if (checkedInput?.checked){
+      checkedPar?.classList.add('done');
+    } else {
+      checkedPar?.classList.remove('done');
+    }
+  }
 
   return(
     <div className="list">
-      <input type='checkbox'/>
-      <p>{props.data}</p>
+      <input ref={checkboxRef} type='checkbox' onChange={checkTaskDone}/>
+      <p ref={paragrafRef}>{props.data}</p>
     </div>
   )
 }
