@@ -1,10 +1,9 @@
 
 import './ListItem.css';
-//import addItem from './CreateElement';
 import { useEffect, useRef, useState } from 'react';
+import { ToDoItem } from './CreateElement';
 
-
-function ListItem(props: {data: string}){
+function ListItem(props: {todoItem: ToDoItem}){
   const checkboxRef = useRef<HTMLInputElement>(null);
   const paragrafRef = useRef<HTMLParagraphElement>(null);
 
@@ -22,7 +21,7 @@ function ListItem(props: {data: string}){
   return(
     <div className="list">
       <input ref={checkboxRef} type='checkbox' onChange={checkTaskDone}/>
-      <p ref={paragrafRef}>{props.data}</p>
+      <p ref={paragrafRef}>{props.todoItem.task}</p>
     </div>
   )
 }

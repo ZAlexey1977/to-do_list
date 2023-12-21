@@ -1,20 +1,23 @@
 import './CreateElement.css';
 import { useEffect, useRef, useState } from 'react';
 
+export type ToDoItem = {
+  id: number,
+  task: string,
+  isDone: boolean
+}
+
 type CreateElementProps = {
-  store: string[], 
-  setMyStore: (elements: string[]) => void
+  store: ToDoItem[], 
+  setMyStore: (elements: ToDoItem[]) => void
 }
 
 function CreateElement(props: CreateElementProps){
+const inputRef = useRef<HTMLInputElement>(null);
 
-const buttonRef = useRef<HTMLButtonElement>(null);
-let buttonAdd = buttonRef.current;
   
   const getTodoItem = (): string => {
-  let getTask: HTMLInputElement = document.querySelector(".getTask") as HTMLInputElement;
-  let data: string = getTask.value;
-  getTask.value = '';
+  let data: string  = inputRef.current?.value || '';
   return data;
   }
 
@@ -27,15 +30,20 @@ let buttonAdd = buttonRef.current;
   
    
   const addItem = (): void => {
-    props.setMyStore([getTodoItem(), ...props.store]);
+    let temp = {
+      id: props.store.length,
+      task: getTodoItem(),
+      isDone: false
+    }
+    props.setMyStore([temp, ...props.store]);
   
   }
   
   return (
     <div className="creater">
       <h2>To do list</h2>
-      <input type="text" className="getTask" onKeyDown={pressKeyEnter}/>
-      <button ref={buttonRef} onClick={addItem} >Add</button>
+      <input type="text" ref={inputRef} onKeyDown={pressKeyEnter}/>
+      <button  onClick={addItem} >Add</button>
     </div>
   )
 }
