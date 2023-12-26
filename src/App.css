@@ -37,6 +37,10 @@ text-decoration: line-through;
 color: rgb(133, 137, 138);
 }
 
+.checkButoon {
+background-color: rgb(112, 101, 210);
+}
+
 
 /* .App-header {
   background-color: #282c34;

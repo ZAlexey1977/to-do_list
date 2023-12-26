@@ -1,5 +1,5 @@
 import "./CreateElement.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 export type ToDoItem = {
   id: number;
@@ -21,7 +21,7 @@ function CreateElement(props: CreateElementProps) {
   };
 
   function pressKeyEnter(event: any) {
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       addItem();
     }
   }

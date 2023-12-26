@@ -1,28 +1,39 @@
 import "./ListItem.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ToDoItem } from "./CreateElement";
 
-function ListItem(props: { todoItem: ToDoItem }) {
+type ListElementProps = {
+  todoItem: ToDoItem;
+  index: number;
+  store: ToDoItem[];
+  setMyStore: (elements: ToDoItem[]) => void;
+};
+
+function ListItem(props: ListElementProps) {
   const checkboxRef = useRef<HTMLInputElement>(null);
-  const paragrafRef = useRef<HTMLParagraphElement>(null);
+
+  const taskClassName = props.todoItem.isDone ? "done" : "";
 
   function checkTaskDone(): void {
     let checkedInput = checkboxRef.current;
-    let checkedPar = paragrafRef.current;
 
-    if (checkedInput?.checked) {
-      checkedPar?.classList.add("done");
-      props.todoItem.isDone = true;
-    } else {
-      checkedPar?.classList.remove("done");
-      props.todoItem.isDone = false;
-    }
+    const currentItem: ToDoItem = {
+      ...props.todoItem,
+      isDone: !!checkedInput?.checked,
+    };
+    props.store[props.index] = currentItem;
+    props.setMyStore([...props.store]);
   }
 
   return (
     <div className="list">
-      <input ref={checkboxRef} type="checkbox" onChange={checkTaskDone} />
-      <p ref={paragrafRef}>{props.todoItem.task}</p>
+      <input
+        ref={checkboxRef}
+        type="checkbox"
+        onChange={checkTaskDone}
+        checked={props.todoItem.isDone}
+      />
+      <p className={taskClassName}>{props.todoItem.task}</p>
     </div>
   );
 }
